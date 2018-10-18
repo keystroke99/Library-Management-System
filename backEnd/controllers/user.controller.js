@@ -183,6 +183,15 @@ const loginUser = async function (req, res) {
                                         message: 'successfully logged in',
                                         userData : user
                                     });
+                                    let reqbody = {};
+                                    reqbody.lastLoggedInDate = new Date()
+                                    User.findOneAndUpdate({_id: user._id}, reqbody, function (err, userObj) {
+                                        if (err) return console.log('update err')
+                                        if (userObj) {
+                                            console.log('login time update success')
+                                        }
+                                    });
+                                    
                                 } else {
                                     res.json({
                                         success: false,
