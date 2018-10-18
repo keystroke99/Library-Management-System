@@ -23,7 +23,7 @@ ng serve
 ```
 
 # GITHUB URL : https://github.com/keystroke99/Library-Management-System.git
-# POSTMAN COLLECTIONS LINK : 
+# POSTMAN COLLECTIONS LINK : https://www.getpostman.com/collections/6796b93ca5d490bdbce1
 # SAMPLE BOOK DATA TAKE FROM AMAZON BOOK STORE
 # USER MODEL:
 ```
