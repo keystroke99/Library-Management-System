@@ -36,9 +36,6 @@
                 <th style="width: 20%">
                   <mfDefaultSorter by="title">Title</mfDefaultSorter>
                 </th>
-                <th style="width: 50%">
-                  <mfDefaultSorter by="description">Description</mfDefaultSorter>
-                </th>
                 <th style="width: 10%">
                   <mfDefaultSorter by="author">Author</mfDefaultSorter>
                 </th>
@@ -65,7 +62,6 @@
             <tbody>
               <tr *ngFor="let book of mf.data">
                 <td>{{book.title}}</td>
-                <td>{{book.description}}</td>
                 <td>{{book.author}}</td>
                 <td>{{book.isbn}}</td>
                 <td>{{book.publisher}}</td>
