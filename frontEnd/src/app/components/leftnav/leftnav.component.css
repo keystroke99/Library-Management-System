@@ -1,0 +1,9 @@
+.leftnav{ padding: 0px;}
+.realty_logo{ padding: 10px 0px;}
+.realtyNav{ list-style: none; border-top: 1px solid #ddd; padding: 0px; margin: 0px; }
+.realtyNav > li{ font-size: 14px; padding: 12px 20px; border-bottom: 1px solid #ddd; cursor: pointer;}
+.fxd_navwidth{ width: 100%;}
+.subNav{ padding: 0px; margin: 10px 0px 0px 0px;}
+.navActive{ background-color: #c98536; color: #fff;}
+.subNav > li{ padding: 5px 10px; margin: 0px; font-size: 13px;}
+.icndwn{ font-size: 1.2rem; position: relative; left: 15px; top: 3px;}

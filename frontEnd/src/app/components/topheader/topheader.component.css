@@ -1,0 +1,16 @@
+.headSearch {
+    border: none; background-color: #fff; height: 40px; border-radius: 20px; padding: 0px 15px;
+}
+.headSearch:focus {
+    border: none; box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1); outline: none;
+}
+.notific_header{ padding: 0px; margin: 0px; float: right;}
+.notific_header > li{ padding:18px 20px; margin: 0px; float: left; color: #fff;}
+
+.user_profile{ float: right;}
+.user_img{ width: 40px; height: 40px; background-color: #fff; display: inline-block;
+    margin: 10px; position: relative; overflow: hidden; border: 1px solid #fff;
+    -webkit-border-radius: 100%;  -moz-border-radius: 100%;  border-radius: 100%;
+}
+.pagName{ color: #fff; padding: 18px 0px; font-size: 16px;}
+.ceobg{ width: 100%; height: 100%; object-fit: cover;}

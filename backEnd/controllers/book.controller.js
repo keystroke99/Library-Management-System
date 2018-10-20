@@ -86,7 +86,7 @@ module.exports.getByBookId = getByBookId;
 const updateByBookId = async function(req, res){
     Book.findById(req.params.bookId, function (err, result) {
         if (result) {
-            Book.findOneAndUpdate(req.params.bookId, req.body, function (err, bookObj) {
+            Book.findOneAndUpdate({_id: req.params.bookId}, req.body, function (err, bookObj) {
                 if (err) return res.json({
                     success: false,
                     message: 'Error in updating book',

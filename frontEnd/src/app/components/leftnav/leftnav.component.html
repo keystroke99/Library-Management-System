@@ -1,0 +1,18 @@
+<div class="leftnav">
+  <nav class="navbar navbar-default nopad">
+    <div class="container-fluid padzero">
+      <div class="navbar-header realty_logo">
+        <a class="navbar-brand"><img src="assets/images/logo.png" width="100%" alt="1421 Realty" title="1421 Realty"></a>
+      </div>
+      <div class="fxd_navwidth">
+        <ul class="nav navbar-nav realtyNav">
+          <li [ngClass]="navPages=='usermanagement'? 'navActive' : '' " (click)="um()"><i class="fas fa-users"></i> User Management</li>
+          <li [ngClass]="navPages=='booksmanagement'? 'navActive' : '' " (click)="bm()"><i class="fa fa-book" aria-hidden="true"></i>
+            Books Management</li>
+          
+        </ul>
+        
+      </div>
+    </div>
+  </nav>
+</div>

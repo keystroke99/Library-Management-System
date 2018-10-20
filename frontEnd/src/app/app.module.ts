@@ -1,46 +1,57 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { RouterModule, Routes, Router } from'@angular/router';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
+import { ChartsModule, Color } from 'ng2-charts/ng2-charts';
+import { HttpModule } from '@angular/http';
+import { HttpClientModule, HttpClient, HttpClientJsonpModule, HttpHeaders  } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { LoginComponent } from './components/login/login.component';
+import { LoginComponent } from './Components/login/login.component';
+import {DataTableModule} from "angular-6-datatable";
 
+import { DashservicesService } from './Services/dashservices.service';
+import { LeftnavComponent } from './Components/leftnav/leftnav.component';
+import { TopheaderComponent } from './Components/topheader/topheader.component';
+import { UsermanagementComponent } from './Components/usermanagement/usermanagement.component';
+import { BooksmanagementComponent } from './components/booksmanagement/booksmanagement.component';
 
-import { ApicallsService } from './services/apicalls.service';
-import { RegisterComponent } from './components/register/register.component';
-import { UsersComponent } from './components/users/users.component';
-import { BooksComponent } from './components/books/books.component';
-
-
-// Routes
-
-const appRoutes: Routes = [
-  {path: 'login', component: LoginComponent},
-  {path: 'register', component: RegisterComponent},
-  {path: 'users', component: UsersComponent},
-  {path: '', redirectTo: '/login', pathMatch: 'full'}
-];
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent,
-    UsersComponent,
-    BooksComponent,
+
+    LeftnavComponent,
+    TopheaderComponent,
+    UsermanagementComponent,
+
+    BooksmanagementComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(
-      appRoutes
-    ),
-    HttpClientModule
+    ChartsModule,
+    HttpModule,
+    DataTableModule,
+    HttpClientModule,
+    HttpClientJsonpModule,
+    ReactiveFormsModule,
+    
+    RouterModule.forRoot([
+      { path : '', redirectTo : 'login', pathMatch : 'full'},
+      { path : 'login', component : LoginComponent},
+
+      { path : 'usermanagement', component : UsermanagementComponent},
+      { path : 'booksmanagement', component : BooksmanagementComponent}
+
+    ])
   ],
-  providers: [ApicallsService],
+  providers: [
+    DashservicesService,
+    
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

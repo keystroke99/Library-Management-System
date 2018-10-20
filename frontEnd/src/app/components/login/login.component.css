@@ -1,0 +1,13 @@
+.login_frm{ width: 70%; position: absolute; top: 50%; left: 50%;
+    -webkit-transform: translate(-50%, -50%); -moz-transform: translate(-50%, -50%); transform: translate(-50%, -50%);
+}
+.myinp{  box-shadow: none; appearance: none;}
+.error_mes{ color: red; border-color:1px solid red; box-shadow: none;}
+.real_logo{ margin:0px 0px 25px 0px;}
+.realBtn{ outline: none; box-shadow: none; appearance: none; color: #fff; border-radius: 2px;
+    background-color: #c98536; border: none; text-align: center;
+    margin-bottom: 0px;
+}
+.realBtn:hover{ background-color: #333;}
+.sgn_btn{ margin-left: 20px; font-size: 13px;}
+.sgup{ cursor: pointer; font-weight: bold;}

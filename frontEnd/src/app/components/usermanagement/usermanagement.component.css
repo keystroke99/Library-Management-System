@@ -1,0 +1,18 @@
+.crtUser{ width: 100%; display: block; margin: 20px auto; float: none; height: 45px;}
+.user_custom{ width: 220px; right: 20px; position: absolute; background-color: #fff; padding: 15px;
+    -webkit-box-shadow: 0px 0px 100px #000; -moz-box-shadow: 0px 0px 100px #000; box-shadow: 0px 0px 100px #000; z-index: 50;
+}
+.user_custom > li{ padding: 10px 10px; border-bottom: 1px solid #ddd; cursor: pointer;}
+.icn{ position: relative; right: 10px;}
+.spacemsg{ margin: 10px;}
+
+.delete_mask{ width: 100%; height: 100%; position: fixed; top: 0px; bottom: 0px; left: 0px; right: 0px;
+    z-index: 1200; background-color: rgba(0,0,0,.8);
+}
+.delete_user{ max-width: 660px; position: absolute; top: 40%; left: 0; right: 0; margin: 0px auto;
+    display: block; background-color: #fff; z-index: 3000; padding: 30px;
+}
+.delete_user > p{ text-align: center; font-size: 16px; font-weight: bold;}
+.clbtn{ width: 100px; margin: 0px auto; display: block; text-align: center;}
+
+

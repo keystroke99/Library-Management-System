@@ -71,7 +71,7 @@ const updateByUserId = async function (req, res) {
 
     User.findById(req.params.userId, function (err, result) {
         if (result) {
-            User.findOneAndUpdate(req.params.userId, req.body, function (err, userObj) {
+            User.findOneAndUpdate({_id: req.params.userId}, req.body, function (err, userObj) {
                 if (err) return res.json({
                     success: false,
                     message: 'Error in updating user',

@@ -1,0 +1,303 @@
+<div class="container-fluid zeropad top_hd">
+  <topheader></topheader>
+</div>
+
+<div class="container-fluid zeropadleft">
+  <div class="lftnavWrapper">
+    <leftnav></leftnav>
+  </div>
+
+
+  <div class="right_contwrapper right_cont">
+    <div class="container-fluid main_cont">
+      <div class="row">
+        <div class="col-12 btspace">
+          <div class="row">
+            <div class="col-12 col-sm-3">
+              <button type="button" class="btn btn-light">Total books : <strong>{{booksData.length}}</strong></button>
+              <!-- <input type="text" class="form-control user_search" id="search" name="search" placeholder="search"> -->
+            </div>
+            <div class="col-12 col-sm-9">
+
+              <button type="button" data-toggle="modal" data-target="#crtBook" class="btn btn-default realt_glbtn"><i
+                  class="fas fa-user-plus"></i> Create Book</button>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+
+          <table class="table table-striped" [mfData]="booksData" #mf="mfDataTable" [mfRowsOnPage]="5">
+            <thead>
+              <tr>
+                <th style="width: 20%">
+                  <mfDefaultSorter by="title">Title</mfDefaultSorter>
+                </th>
+                <th style="width: 50%">
+                  <mfDefaultSorter by="description">Description</mfDefaultSorter>
+                </th>
+                <th style="width: 10%">
+                  <mfDefaultSorter by="author">Author</mfDefaultSorter>
+                </th>
+                <th style="width: 20%">
+                  <mfDefaultSorter by="isbn">Isbn</mfDefaultSorter>
+                </th>
+                <th style="width: 20%">
+                  <mfDefaultSorter by="publisher">Publisher</mfDefaultSorter>
+                </th>
+                <th style="width: 20%">
+                    <mfDefaultSorter by="publishedYear">Published Year</mfDefaultSorter>
+                  </th>
+                <th style="width: 20%">
+                  <mfDefaultSorter by="quantity">Quantity</mfDefaultSorter>
+                </th>
+                <th style="width: 20%">
+                  <mfDefaultSorter by="createdAt">Created At</mfDefaultSorter>
+                </th>
+                <th style="width: 20%">
+                  <mfDefaultSorter>Actions</mfDefaultSorter>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let book of mf.data">
+                <td>{{book.title}}</td>
+                <td>{{book.description}}</td>
+                <td>{{book.author}}</td>
+                <td>{{book.isbn}}</td>
+                <td>{{book.publisher}}</td>
+                <td>{{book.publishedYear}}</td>
+                <td>{{book.quantity}}</td>
+                <td>{{book.createdAt | date : 'medium'}}</td>
+                <td><a (click)="openUpdFOrm(book._id)"><i data-toggle="modal" data-target="#myModalUpd" class="fa fa-pencil-square-o"
+                      aria-hidden="true"></i>
+                  </a> &nbsp; <a (click)="deleteBook(book._id)"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="4">
+                  <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+                </td>
+              </tr>
+            </tfoot>
+          </table>
+
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+  <!--Right Content End-->
+
+
+</div>
+
+<!-- The Modal -->
+
+
+<!-- The Modal -->
+
+
+<div class="modal fade" id="crtBook">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Create Book</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+
+        <form [formGroup]="crtBookForm" (submit)="onSubmitBook()">
+          <div class="row">
+            <div class="col-12 col-sm-6">
+              <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" class="form-control" name="title" [(ngModel)]="title" [ngClass]="{'is-invalid': isSubmitted && FrmControls.title.errors}"
+                  [formControl]="crtBookForm.controls['title']" placeholder="Title" id="title">
+                <div *ngIf="isSubmitted && FrmControls.title.errors" class="error_mes">
+                  <div *ngIf="FrmControls.title.errors.required">Title Is Requied</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-sm-6">
+              <div class="form-group">
+                <label for="description">Description</label>
+                <input type="text" class="form-control" name="description" [(ngModel)]="description" [ngClass]="{'is-invalid': isSubmitted && FrmControls.description.errors}"
+                  [formControl]="crtBookForm.controls['description']" placeholder="Description" id="description">
+                <div *ngIf="isSubmitted && FrmControls.description.errors" class="error_mes">
+                  <div *ngIf="FrmControls.description.errors.required">Description Is Requied</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-sm-6">
+              <div class="form-group">
+                <label for="author">Author</label>
+                <input type="text" class="form-control" name="author" [(ngModel)]="author" [ngClass]="{'is-invalid': isSubmitted && FrmControls.author.errors}"
+                  [formControl]="crtBookForm.controls['author']" placeholder="Author" id="author">
+                <div *ngIf="isSubmitted && FrmControls.author.errors" class="error_mes">
+                  <div *ngIf="FrmControls.author.errors.required">Author Is Requied</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-sm-6">
+              <div class="form-group">
+                <label for="isbn">Isbn</label>
+                <input type="text" class="form-control" name="isbn" [(ngModel)]="isbn" [ngClass]="{'is-invalid': isSubmitted && FrmControls.isbn.errors}"
+                  [formControl]="crtBookForm.controls['isbn']" placeholder="Isbn" id="isbn">
+                <div *ngIf="isSubmitted && FrmControls.isbn.errors" class="error_mes">
+                  <div *ngIf="FrmControls.isbn.errors.required">Isbn Is Requied</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-sm-6">
+              <div class="form-group">
+                <label for="quantity">Quantity</label>
+                <input type="number" class="form-control" name="quantity" [(ngModel)]="quantity" [ngClass]="{'is-invalid': isSubmitted && FrmControls.quantity.errors}"
+                  [formControl]="crtBookForm.controls['quantity']" placeholder="Quantity" id="quantity">
+                <div *ngIf="isSubmitted && FrmControls.quantity.errors" class="error_mes">
+                  <div *ngIf="FrmControls.quantity.errors.required">Quantity Is Requied</div>
+                </div>
+              </div>
+            </div>
+
+
+            <!-- <div class="col-12 col-sm-4">
+                  <div class="form-group">
+                    <label for="mobileCountryCode">Mobile Country Code</label>
+                    <input type="text" class="form-control" name="mobileCountryCode" [(ngModel)]="mobileCountryCode" [formControl]="crtBookForm.controls['mobileCountryCode']" 
+                    placeholder="Mobile Country Code" id="mobileCountryCode">
+                  </div>
+                </div> -->
+
+            <div class="col-12 col-sm-6">
+              <div class="form-group">
+                <label for="publisher">Publisher</label>
+                <input type="text" class="form-control" name="publisher" [(ngModel)]="publisher" [ngClass]="{'is-invalid': isSubmitted && FrmControls.publisher.errors}"
+                  [formControl]="crtBookForm.controls['publisher']" placeholder="Publisher" id="publisher">
+                <div *ngIf="isSubmitted && FrmControls.publisher.errors" class="error_mes">
+                  <div *ngIf="FrmControls.publisher.errors.required">Publisher Is Requied</div>
+                </div>
+              </div>
+            </div>
+
+
+
+            <div class="col-12 col-sm-6">
+              <div class="form-group">
+                <label for="publishedYear">Published Year</label>
+                <input type="text" class="form-control" name="publishedYear" [(ngModel)]="publishedYear" [ngClass]="{'is-invalid': isSubmitted && FrmControls.publishedYear.errors}"
+                  [formControl]="crtBookForm.controls['publishedYear']" placeholder="publishedYear" id="publishedYear">
+                <div *ngIf="isSubmitted && FrmControls.publishedYear.errors" class="error_mes">
+                  <div *ngIf="FrmControls.publishedYear.errors.required">Published Year Is Requied</div>
+                </div>
+              </div>
+            </div>
+
+
+
+            <div class="col-12" *ngIf="userCrtMes">
+              <div class="alert alert-success">Successfully created new book.</div>
+            </div>
+            <div class="col-12">
+              <button type="submit" class="btn btn-default realt_glbtn crtUser">Create Book</button>
+            </div>
+
+
+          </div>
+        </form>
+
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="myModalUpd">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Update Book</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class="updUserForm" *ngIf="updUserFRM">
+          <form>
+            <div class="col-12" *ngIf="userUpdMes">
+              <div class="alert alert-success">Successfully updated book.</div>
+            </div>
+            <div class="form-group">
+              <label>Title</label>
+              <input type="text" [(ngModel)]="bookViewData.title" name="bookViewData.title" class="form-control"
+                placeholder="Enter Title">
+            </div>
+            <div class="form-group">
+              <label>Description</label>
+              <input type="text" [(ngModel)]="bookViewData.description" name="bookViewData.description" class="form-control"
+                placeholder="Enter Description">
+            </div>
+            <div class="form-group">
+              <label>Author</label>
+              <input type="text" [(ngModel)]="bookViewData.author" name="bookViewData.author" class="form-control" id="exampleInputEmail1"
+                aria-describedby="emailHelp" placeholder="Enter Author">
+            </div>
+            <div class="form-group">
+              <label>ISBN No</label>
+              <input type="text" [(ngModel)]="bookViewData.isbn" name="bookViewData.isbn" class="form-control" id="exampleInputEmail1"
+                aria-describedby="emailHelp" placeholder="Enter ISBN No">
+            </div>
+            <div class="form-group">
+              <label>Publisher</label>
+              <input type="text" [(ngModel)]="bookViewData.publisher" name="bookViewData.publisher" class="form-control" id="exampleInputEmail1"
+                aria-describedby="emailHelp" placeholder="Enter Publisher">
+            </div>
+            <div class="form-group">
+                <label>Published Year</label>
+                <input type="text" [(ngModel)]="bookViewData.publishedYear" name="bookViewData.publishedYear" class="form-control" id="exampleInputEmail1"
+                  aria-describedby="emailHelp" placeholder="Enter Published year">
+              </div>
+              <div class="form-group">
+                  <label>Quantity</label>
+                  <input type="text" [(ngModel)]="bookViewData.quantity" name="bookViewData.quantity" class="form-control" id="exampleInputEmail1"
+                    aria-describedby="emailHelp" placeholder="Enter Quantity">
+                </div>
+
+            <!-- <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1" [(ngModel)]="liveStatus" name="liveStatus">
+          <label class="form-check-label" for="exampleCheck1">Online</label>
+        </div> -->
+            <button type="submit" class="btn btn-primary" (click)="onUpdateBook()">Submit</button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<div class="delete_mask" *ngIf="msk"></div>
+
+<div class="delete_user" *ngIf="dsu">
+  <p>Are you sure you want to delete this Book ?</p>
+  <button type="button" class="btn btn-primary clbtn" (click)="dltBook()">Ok</button>
+</div>
